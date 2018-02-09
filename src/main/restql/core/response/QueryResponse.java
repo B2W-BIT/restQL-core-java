@@ -1,6 +1,7 @@
 package restql.core.response;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import restql.core.exception.ResponseParseException;
@@ -23,6 +24,8 @@ public class QueryResponse {
     public QueryResponse(String response) {
         try {
             ObjectMapper mapper = new ObjectMapper();
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
             this.rawString = response;
             this.mapper = mapper;
             this.parsed = mapper.readTree(response);

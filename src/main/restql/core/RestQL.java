@@ -1,6 +1,7 @@
 package restql.core;
 
 import restql.core.config.ConfigRepository;
+import restql.core.config.RouteMap;
 import restql.core.interop.ClojureRestQLApi;
 import restql.core.query.QueryInterpolator;
 import restql.core.query.QueryOptions;
@@ -51,23 +52,48 @@ public class RestQL {
 		this.queryOptions = queryOptions;
 	}
 
-	public QueryResponse executeQuery(String query, QueryOptions queryOptions, Object... args) {
-		return new QueryResponse(ClojureRestQLApi.query(configRepository.getMappings().toMap(),
+	public QueryResponse executeQuery(String query, RouteMap mappings, QueryOptions queryOptions, Object... args) {
+		return new QueryResponse(ClojureRestQLApi.query(mappings.toMap(),
 				this.encoders,
 				QueryInterpolator.interpolate(query, args),
-				queryOptions.toMap()));
+				queryOptions != null ? queryOptions.toMap() : null));
+	}
+
+	public QueryResponse executeQuery(String query, QueryOptions queryOptions, Object... args) {
+		return this.executeQuery(
+				query,
+				this.configRepository.getMappings(),
+				queryOptions,
+				this.queryOptions,
+				args
+		);
 	}
 
 	public QueryResponse executeQuery(String query, Object... args) {
 		return this.executeQuery(query, this.queryOptions, args);
 	}
 
-	public void executeQueryAsync(String query, QueryOptions queryOptions, Consumer<QueryResponse> consumer, Object... args) {
-		ClojureRestQLApi.queryAsync(configRepository.getMappings().toMap(),
+	public void executeQueryAsync(String query,
+								  RouteMap mappings,
+								  QueryOptions queryOptions,
+								  Consumer<QueryResponse> consumer,
+								  Object... args) {
+
+		ClojureRestQLApi.queryAsync(mappings.toMap(),
 				this.encoders,
 				QueryInterpolator.interpolate(query, args),
-				queryOptions.toMap(),
+				queryOptions != null ? queryOptions.toMap() : null,
 				result -> consumer.accept(new QueryResponse((String) result)));
+	}
+
+	public void executeQueryAsync(String query, QueryOptions queryOptions, Consumer<QueryResponse> consumer, Object... args) {
+		this.executeQueryAsync(
+				query,
+				configRepository.getMappings(),
+				queryOptions,
+				consumer,
+				args
+		);
 	}
 
 	public void executeQueryAsync(String query, Consumer<QueryResponse> consumer, Object... args) {
