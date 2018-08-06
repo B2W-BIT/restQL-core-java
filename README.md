@@ -15,6 +15,11 @@ from hero as heroList
 
 You can learn more about restQL query language [here](https://github.com/B2W-BIT/restQL-server/wiki/RestQL-Query-Language) and [here](http://restql.b2w.io)
 
+Talk with other restQL users in our Telegram groups:
+
+* [@restQL](https://t.me/restQL): restQL Telegram Group
+* [@restQLBR](https://t.me/restQLBR): Brazilian restQL Telegram Group
+
 restQL-core is built upon the battle proven [HttpKit](http://www.http-kit.org/600k-concurrent-connection-http-kit.html) and [Clojure core.async](http://clojure.com/blog/2013/06/28/clojure-core-async-channels.html) to maximize performance and throughtput.
 
 If you're using Clojure you may want to check [restQL-core](https://github.com/B2W-BIT/restQL-core) or [restQL-Server](https://github.com/B2W-BIT/restQL-server) if you're using another languagem or working in a client application.
