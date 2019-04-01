@@ -64,7 +64,6 @@ public class RestQL {
 				query,
 				this.configRepository.getMappings(),
 				queryOptions,
-				this.queryOptions,
 				args
 		);
 	}

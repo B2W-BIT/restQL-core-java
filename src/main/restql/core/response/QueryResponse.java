@@ -79,8 +79,9 @@ public class QueryResponse {
             }
             else {
                 Iterator<JsonNode> items = parsed.get(path[0]).get("result").elements();
+                Iterator<JsonNode> details = parsed.get(path[0]).get("details").elements();
                 while(items.hasNext()) {
-                    result.add(new ArrayQueryItemResponse(parsed.get(path[0]).get("details"), items.next()));
+                    result.add(new ArrayQueryItemResponse(details.next(), items.next()));
                 }
             }
             return (List<T>) result;
