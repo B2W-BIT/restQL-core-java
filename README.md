@@ -110,7 +110,7 @@ RestQL restQL = new RestQL(config);
 String queryCardsAndDetails = "from cards as cardsList params type = ? \n"
                             + "from card as cardWithDetails params id = cardsList.id";
 
-QueryResponse response = restQL.executeQuery(query, "Artifact");
+QueryResponse response = restQL.executeQuery(queryCardsAndDetails, "Artifact");
 
 // The JSON String
 String jsonString = response.toString();
