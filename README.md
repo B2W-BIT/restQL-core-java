@@ -51,7 +51,7 @@ repositories {
   }
 }
 ...
-compile 'com.b2wdigital:restql-core-java:2.2.1'
+compile 'com.b2wdigital:restql-core-java:3.5.5'
 ```
 
 ### First query
@@ -123,7 +123,7 @@ List<MTGCard> cards = result.getList("cardWithDetails", MTGCard.class);
 
 As prerequisites to build restQL from source we have:
 
-+ Java 8
++ Java 11
 + Maven 3
 
 Just clone this repo and run "mvn compile".
