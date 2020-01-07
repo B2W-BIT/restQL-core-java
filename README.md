@@ -38,7 +38,7 @@ Add Clojars repository and restQL dependency to your project
 <dependency>
 	<groupId>com.b2wdigital</groupId>
         <artifactId>restql-core-java</artifactId>
-       	<version>2.2.1</version>
+       	<version>3.5.5</version>
 </dependency>
 ```
 
