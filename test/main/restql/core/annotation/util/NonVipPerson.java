@@ -4,7 +4,7 @@ import restql.core.annotation.RestEntity;
 
 @RestEntity(
         name = "NonVipPerson",
-        ignoreErors = true
+        ignoreErrors = true
 )
 public class NonVipPerson {
 }
