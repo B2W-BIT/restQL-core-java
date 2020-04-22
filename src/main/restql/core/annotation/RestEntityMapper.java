@@ -153,7 +153,7 @@ public class RestEntityMapper {
             }
         }
 
-        if (restEntityAnnotation.ignoreErors()) {
+        if (restEntityAnnotation.ignoreErrors()) {
             queryBuilder.append(" ignore-errors");
         }
 

@@ -6,7 +6,7 @@ import restql.core.annotation.RestEntity;
         name = "CardSet",
         resourceMapping = "http://api.magicthegathering.io/v1/sets/:setCode",
         responseLookupPath = "set",
-        ignoreErors = true
+        ignoreErrors = true
 )
 public class CardSet {
     private String code;
